@@ -2,13 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: traefik
-  labels:
-    app: traefik
 spec:
-  selector:
-    matchLabels:
-      app: traefik
-      release: traefik
   strategy:
     rollingUpdate:
       maxSurge: 2
@@ -18,8 +12,6 @@ spec:
     metadata:
       annotations:
         checksum/config: 8fe193d65f50b258873dd0d3073b0187631bc80b0427f4d80addaaef0b9e10da
-      labels:
-        app: traefik
     spec:
       serviceAccountName: traefik
       terminationGracePeriodSeconds: 60

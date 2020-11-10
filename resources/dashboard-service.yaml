@@ -4,9 +4,6 @@ metadata:
   name: traefik-dashboard
 spec:
   type: ClusterIP
-  selector:
-    app: traefik
-    release: traefik
   ports:
   - name: dashboard-http
     port: 80

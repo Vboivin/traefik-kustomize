@@ -6,9 +6,6 @@ metadata:
     prometheus.io/scrape: "true"
 spec:
   type: ClusterIP
-  selector:
-    app: traefik
-    release: traefik
   ports:
     - port: 9100
       name: metrics
