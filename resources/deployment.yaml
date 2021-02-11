@@ -16,7 +16,7 @@ spec:
       serviceAccountName: traefik
       terminationGracePeriodSeconds: 60
       containers:
-      - image: traefik:1.7.22
+      - image: traefik:2.4.2
         imagePullPolicy: IfNotPresent
         name: traefik
         resources:
