@@ -2,7 +2,6 @@ resources:
 - resources/dashboard-service.yaml
 - resources/default-cert-secret.yaml
 - resources/deployment.yaml
-- resources/hpa.yaml
 - resources/prometheus-service.yaml
 - resources/service.yaml
 - resources/rbac.yaml

@@ -3,20 +3,23 @@ kind: Deployment
 metadata:
   name: traefik
 spec:
+  replicas: 1
   strategy:
     rollingUpdate:
-      maxSurge: 2
-      maxUnavailable: 2
+      maxSurge: 1
+      maxUnavailable: 1
     type: RollingUpdate
   template:
     metadata:
+      labels:
+        app: traefik-lb
       annotations:
         checksum/config: 8fe193d65f50b258873dd0d3073b0187631bc80b0427f4d80addaaef0b9e10da
     spec:
       serviceAccountName: traefik
       terminationGracePeriodSeconds: 60
       containers:
-      - image: traefik:1.7.22
+      - image: traefik:1.7.28
         imagePullPolicy: IfNotPresent
         name: traefik
         resources:
@@ -72,8 +75,13 @@ spec:
 
       volumes:
       - name: config
+        # configMap generated in repo https://github.com/clubCedille/cloud-sre
+        # at /namespace/kube-system/traefik/overlays/prod
         configMap:
           name: traefik
       - name: ssl
         secret:
           secretName: traefik-default-cert
+  selector:
+    matchLabels:
+      app: traefik-lb
