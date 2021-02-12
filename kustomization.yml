@@ -10,7 +10,7 @@ namespace: kube-system
 
 images:
   - name: traefik
-  - newTag: 1.7.28
+    newTag: 1.7.28
 
 commonLabels:
   app.kubernetes.io/name: traefik
